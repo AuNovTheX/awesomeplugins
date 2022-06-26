@@ -46,6 +46,8 @@ object USRPFP : AbstractDatabase() {
                     val matcher = Pattern.compile(
                         id.toString() + regex + id.toString() + regex2
                     ).matcher(data)
+		    UserPFP.log.debug(data.toString())
+		    UserPFP.log.debug(matcher.group(0).toString())
                     if (matcher.find()) {
                         mapCache[id] = PFP(matcher.group(1), matcher.group(2)).also {
                                 it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
