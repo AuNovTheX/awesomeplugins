@@ -15,7 +15,7 @@ import com.discord.utilities.images.MGImages
 
 
 object USRPFP : AbstractDatabase() {
-    override val regex: String = ".*\n.*?url\(\'(http?s:[\w.\/-]*)"
+    override val regex: String = ".*\\n.*?url\\(\\'(http?s:[\\w.\\/-]*)"
     override val url: String = "https://raw.githubusercontent.com/pikaioff/USERPFP/main/src/dist/source.css"
 
     override var data: String = ""
