@@ -1,11 +1,11 @@
-package om.ega.sunkey.UserPFP.model
+package om.ega.sunkey.userpfp.model
 
 import android.content.Context
 import com.aliucord.Http
 import com.aliucord.Utils
 import com.aliucord.api.PatcherAPI
 import com.aliucord.api.SettingsAPI
-import om.ega.sunkey.UserPFP.UserPFP
+import om.ega.sunkey.userpfp.UserPFP
 import com.aliucord.utils.IOUtils
 import java.io.File
 import java.io.FileInputStream

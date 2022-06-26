@@ -1,18 +1,18 @@
-package om.ega.sunkey.UserPFP
+package om.ega.sunkey.userpfp
 
 import android.content.Context
 import com.aliucord.Logger
 import com.aliucord.Utils
 import com.aliucord.annotations.AliucordPlugin
 import com.aliucord.entities.Plugin
-import om.ega.sunkey.UserPFP.model.AbstractDatabase
-import om.ega.sunkey.UserPFP.model.USRPFP
+import om.ega.sunkey.userpfp.model.AbstractDatabase
+import om.ega.sunkey.userpfp.model.USRPFP
 import kotlin.Throws
 
 @AliucordPlugin
 class UserBG : Plugin() {
     init {
-        USRPFP = om.ega.sunkey.UserPFP.model.USRPFP
+        USRPFP = om.ega.sunkey.userpfp.model.USRPFP
     }
     @Throws(NoSuchMethodException::class)
     override fun start(ctx: Context){ 

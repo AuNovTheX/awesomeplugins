@@ -1,4 +1,4 @@
-package om.ega.sunkey.UserPFP
+package om.ega.sunkey.userpfp
 
 import android.content.Context
 import com.aliucord.Utils.createCheckedSetting

@@ -1,4 +1,4 @@
-package com.aliucord.plugins.UserPFP.model
+package om.ega.sunkey.userpfp.model
 
 import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
@@ -14,7 +14,7 @@ import b.f.g.e.s
 import com.discord.utilities.images.MGImages
 
 
-object APFP : AbstractDatabase() {
+object USRPFP : AbstractDatabase() {
     override val regex: String = ".*\n.*?url\(\'(http?s:[\w.\/-]*)"
     override val url: String = "https://raw.githubusercontent.com/pikaioff/USERPFP/main/src/dist/source.css"
 
