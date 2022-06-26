@@ -10,7 +10,7 @@ import om.ega.sunkey.userpfp.model.USRPFP
 import kotlin.Throws
 
 @AliucordPlugin
-class UserBG : Plugin() {
+class UserPFP : Plugin() {
     init {
         USRPFP = om.ega.sunkey.userpfp.model.USRPFP
     }
