@@ -15,7 +15,8 @@ import com.discord.utilities.images.MGImages
 
 
 object USRPFP : AbstractDatabase() {
-    override val regex: String = ".*\\n.*?url\\(\\'(http?s:[\\w.\\/-]*)"
+    override val regex: String = ".*\\n.*?url\\(\\'(http?s:[\\w.\\/-]*\\.gif).*\\n.*\\n.*"
+    val regex2: String = ".*\\n.*url\\(\\'(http?s:[\\w.\\/-]*\\.png)"
     override val url: String = "https://raw.githubusercontent.com/pikaioff/USERPFP/main/src/dist/source.css"
 
     override var data: String = ""
@@ -42,7 +43,7 @@ object USRPFP : AbstractDatabase() {
                     it.result = mapCache[id]?.let { it1 ->  if ((it.args[3] as Boolean)) it1.animated else it1.static
                 } else {
                     val matcher = Pattern.compile(
-                        id.toString() + regex
+                        id.toString() + regex + id.toString() + regex2
                     ).matcher(data)
                     if (matcher.find()) {
                         mapCache[id] = PFP(matcher.group(1), matcher.group(2)).also {
