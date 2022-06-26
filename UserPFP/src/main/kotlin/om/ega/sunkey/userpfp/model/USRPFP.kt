@@ -12,6 +12,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 import java.util.regex.Pattern
 import b.f.g.e.s
 import com.discord.utilities.images.MGImages
+import om.ega.sunkey.userpfp.UserPFP
 
 
 object USRPFP : AbstractDatabase() {
@@ -48,6 +49,9 @@ object USRPFP : AbstractDatabase() {
                     if (matcher.find()) {
                         mapCache[id] = PFP(matcher.group(1), matcher.group(2)).also {
                                 it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
+				UserPFP.log.debug("executing")
+				UserPFP.log.debug(it.result.toString())
+				UserPFP.log.debug(data.toString() + "data")
                         }
                     }
                 }
