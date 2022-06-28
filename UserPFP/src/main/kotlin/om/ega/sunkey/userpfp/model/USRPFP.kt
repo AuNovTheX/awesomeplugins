@@ -54,6 +54,8 @@ object USRPFP : AbstractDatabase() {
                     if (matcher.find()) {
                         mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
                                 it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
+				UserPFP.log.debug(it.args[3].toString() + " args3")
+				UserPFP.log.debug(it.result.toString() + " result")
 				UserPFP.log.debug(it1.static.toString() + " Static")
 				UserPFP.log.debug(it1.animated.toString() + " Animated")
                         }
@@ -65,7 +67,16 @@ object USRPFP : AbstractDatabase() {
         )
 
         patcher.patch(
-            IconUtils::class.java.getDeclaredMethod("setIcon", ImageView::class.java, String::class.java, Int::class.javaPrimitiveType, Int::class.javaPrimitiveType, Boolean::class.javaPrimitiveType, Function1::class.java, MGImages.ChangeDetector::class.java), Hook {
+            IconUtils::class.java.getDeclaredMethod(
+	    "setIcon", 
+	    ImageView::class.java, 
+	    String::class.java, 
+	    Int::class.javaPrimitiveType, 
+	    Int::class.javaPrimitiveType, 
+	    Boolean::class.javaPrimitiveType, 
+	    Function1::class.java, 
+	    MGImages.ChangeDetector::class.java //what is this for??? idk looks like its for role icons 
+	    ), Hook {
 	     
                 if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Hook
 
