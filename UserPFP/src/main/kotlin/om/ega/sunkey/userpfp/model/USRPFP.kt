@@ -47,6 +47,7 @@ object USRPFP : AbstractDatabase() {
 		      } 
 		    } else {
 		UserPFP.log.debug("else block")
+		UserPFP.log.debug(it.args.toString() + "itargs")
                     val matcher = Pattern.compile(
                         id.toString() + regex + id.toString() + regex2
                     ).matcher(data)
