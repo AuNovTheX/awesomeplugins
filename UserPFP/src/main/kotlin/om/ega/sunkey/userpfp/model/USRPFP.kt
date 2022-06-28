@@ -42,12 +42,14 @@ object USRPFP : AbstractDatabase() {
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id)) {
 			UserPFP.log.debug("if block")
-			UserPFP.log.debug(it.args.toString())
+			//UserPFP.log.debug(it.args.toString())
                     it.result = mapCache[id]?.let { it1 ->  if ((it.args[3] as Boolean)) it1.animated else it1.static
 		      } 
 		    } else {
 		UserPFP.log.debug("else block")
-		UserPFP.log.debug(it.args.toString() + "itargs")
+		UserPFP.log.debug(it.args[0].toString() + " itargs")
+		UserPFP.log.debug(it.args[1].toString() + " itargs1")
+		UserPFP.log.debug(it.args[3].toString() + " itargs3")
                     val matcher = Pattern.compile(
                         id.toString() + regex + id.toString() + regex2
                     ).matcher(data)
