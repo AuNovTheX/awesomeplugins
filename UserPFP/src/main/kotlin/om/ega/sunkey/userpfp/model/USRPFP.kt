@@ -26,8 +26,6 @@ object USRPFP : AbstractDatabase() {
     override val mapCache: MutableMap<Long, PFP> = HashMap()
     override val name: String = "UserPFP"
 
-	val t = Thread()
-
     override fun runPatches(patcher: PatcherAPI, settings: SettingsAPI) {
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod(
@@ -38,11 +36,11 @@ object USRPFP : AbstractDatabase() {
                 Boolean::class.javaPrimitiveType,
                 Integer::class.java
             ), Hook {
-		t() {
+		Thread {
                 if (it.result.toString().contains(".gif") && settings.getBool(
                         "nitroBanner",
                         true
-                    ))  return@t
+                    ))  return@Thread
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id)) {
                     it.result = mapCache[id]?.let { it1 ->  if ((it.args[3] as Boolean)) it1.animated else it1.static
@@ -66,8 +64,8 @@ object USRPFP : AbstractDatabase() {
 
         patcher.patch(
             IconUtils::class.java.getDeclaredMethod("setIcon", ImageView::class.java, String::class.java, Int::class.javaPrimitiveType, Int::class.javaPrimitiveType, Boolean::class.javaPrimitiveType, Function1::class.java, MGImages.ChangeDetector::class.java), Hook {
-	     t() {
-                if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@t
+	     Thread {
+                if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Thread
 
                 val simpleDraweeView = it.args[0] as SimpleDraweeView
                 simpleDraweeView.apply {
