@@ -52,7 +52,7 @@ object USRPFP : AbstractDatabase() {
                     ).matcher(data)
 
                     if (matcher.find()) {
-                        mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
+                        mapCache[id] = PFP(matcher.group(1), matcher.group(2)).also {
                                 it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
 				//UserPFP.log.debug(it.args[3].toString() + " args3")
 				UserPFP.log.debug(it.result.toString() + " result")
