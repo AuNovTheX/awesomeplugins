@@ -51,7 +51,8 @@ object USRPFP : AbstractDatabase() {
 		UserPFP.log.debug(it.args[1].toString() + " itargs1")
 		UserPFP.log.debug(it.args[3].toString() + " itargs3")
                     val matcher = Pattern.compile(
-                        id.toString() + regex + id.toString() + regex2
+                        id.toString() + regex + id.toString() + regex2,
+			Pattern.DOTALL
                     ).matcher(data)
 
                     if (matcher.find()) {
