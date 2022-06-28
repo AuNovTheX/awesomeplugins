@@ -36,7 +36,7 @@ object USRPFP : AbstractDatabase() {
                 Boolean::class.javaPrimitiveType,
                 Integer::class.java
             ), Hook {
-		
+		UserPFP.log.debug(it.args[0].toString() + it.args[3].toString() + " it args 3 with 0")
                 if (it.result.toString().contains(".gif") && settings.getBool(
                         "nitroBanner",
                         true
@@ -54,7 +54,7 @@ object USRPFP : AbstractDatabase() {
                     if (matcher.find()) {
                         mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
                                 it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
-				UserPFP.log.debug(it.args[3].toString() + " args3")
+				//UserPFP.log.debug(it.args[3].toString() + " args3")
 				UserPFP.log.debug(it.result.toString() + " result")
 				UserPFP.log.debug(it1.static.toString() + " Static")
 				UserPFP.log.debug(it1.animated.toString() + " Animated")
