@@ -40,10 +40,11 @@ object USRPFP : AbstractDatabase() {
                         true
                     )) return@Hook
                 val id = it.args[0] as Long
-                if (mapCache.containsKey(id))
+                if (mapCache.containsKey(id)) {
 			UserPFP.log.debug("if block")
 			UserPFP.log.debug(it.args.toString())
                     it.result = mapCache[id]?.let { it1 ->  if ((it.args[3] as Boolean)) it1.animated else it1.static
+		      } 
 		    } else {
 		UserPFP.log.debug("else block")
                     val matcher = Pattern.compile(
@@ -53,7 +54,7 @@ object USRPFP : AbstractDatabase() {
                     if (matcher.find()) {
 		    	UserPFP.log.debug("found")
 			UserPFP.log.debug(matcher.group(0))
-                        mapCache[id] = PFP(matcher.group(1), matcher.group(2)).also {
+                        mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
                                 it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
 				UserPFP.log.debug("executing")
 				UserPFP.log.debug(it.result.toString())
