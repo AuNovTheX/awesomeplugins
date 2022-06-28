@@ -13,6 +13,7 @@ import java.util.regex.Pattern
 import b.f.g.e.s
 import com.discord.utilities.images.MGImages
 import om.ega.sunkey.userpfp.UserPFP
+import com.aliucord.Utils
 
 
 object USRPFP : AbstractDatabase() {
@@ -41,30 +42,21 @@ object USRPFP : AbstractDatabase() {
                     )) return@Hook
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id)) {
-			UserPFP.log.debug("if block")
-			//UserPFP.log.debug(it.args.toString())
                     it.result = mapCache[id]?.let { it1 ->  if ((it.args[3] as Boolean)) it1.animated else it1.static
 		      } 
 		    } else {
-		UserPFP.log.debug("else block")
-		UserPFP.log.debug(it.args[0].toString() + " itargs")
-		UserPFP.log.debug(it.args[1].toString() + " itargs1")
-		UserPFP.log.debug(it.args[3].toString() + " itargs3")
                     val matcher = Pattern.compile(
                         id.toString() + regex + id.toString() + regex2,
 			Pattern.DOTALL
                     ).matcher(data)
 
                     if (matcher.find()) {
-		    	UserPFP.log.debug("found")
-			UserPFP.log.debug(matcher.group(0))
+		    Utils.threadPool.execute {
                         mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
                                 it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
-				UserPFP.log.debug("executing")
-				UserPFP.log.debug(it.result.toString())
-				UserPFP.log.debug(data.toString() + "data")
                         }
                     }
+		  }
                 }
 
             }
