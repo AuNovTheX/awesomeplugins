@@ -36,7 +36,7 @@ object USRPFP : AbstractDatabase() {
                 Boolean::class.javaPrimitiveType,
                 Integer::class.java
             ), Hook {
-		UserPFP.log.debug(it.args[0].toString() + it.args[3].toString() + " it args 3 with 0")
+		//UserPFP.log.debug(it.args[0].toString() + it.args[3].toString() + " it args 3 with 0")
                 if (it.result.toString().contains(".gif") && settings.getBool(
                         "nitroBanner",
                         true
@@ -80,6 +80,9 @@ object USRPFP : AbstractDatabase() {
 	     
                 if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Hook
 
+		UserPFP.log.debug(it.args[1].toString() + " seticon arg 1")
+		UserPFP.log.debug(it.args[0].toString() + " imageview")
+		UserPFP.log.debug(it.args[5].toString() + " boolean")
                 val simpleDraweeView = it.args[0] as SimpleDraweeView
                 simpleDraweeView.apply {
                     hierarchy.n(s.l)
