@@ -43,7 +43,7 @@ object USRPFP : AbstractDatabase() {
                     ))  return@Hook
                 val id = it.args[0] as Long
                 if (mapCache.containsKey(id)) {
-                    it.result = mapCache[id]?.let { it1 ->  if ((it.args[3] as Boolean)) it1.animated else it1.static
+                    it.result = mapCache[id]?.let { it1 -> it1.static
 		      } 
 		    } else {
                     val matcher = Pattern.compile(
@@ -53,11 +53,11 @@ object USRPFP : AbstractDatabase() {
 
                     if (matcher.find()) {
                         mapCache[id] = PFP(matcher.group(1), matcher.group(2)).also {
-                                it1 ->  if ((it.args[3] as Boolean)) it.result = it1.animated else it.result = it1.static
+                                it1 -> it.result = it1.static
 				//UserPFP.log.debug(it.args[3].toString() + " args3")
-				UserPFP.log.debug(it.result.toString() + " result")
-				UserPFP.log.debug(it1.static.toString() + " Static")
-				UserPFP.log.debug(it1.animated.toString() + " Animated")
+				//UserPFP.log.debug(it.result.toString() + " result")
+				//UserPFP.log.debug(it1.static.toString() + " Static")
+				//UserPFP.log.debug(it1.animated.toString() + " Animated")
                         }
                     
 		   }
@@ -80,9 +80,9 @@ object USRPFP : AbstractDatabase() {
 	     
                 if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Hook
 
-		UserPFP.log.debug(it.args[1].toString() + " seticon arg 1")
-		UserPFP.log.debug(it.args[0].toString() + " imageview")
-		UserPFP.log.debug(it.args[5].toString() + " boolean")
+		//UserPFP.log.debug(it.args[1].toString() + " seticon arg 1")
+		//UserPFP.log.debug(it.args[0].toString() + " imageview")
+		//UserPFP.log.debug(it.args[5].toString() + " boolean")
                 val simpleDraweeView = it.args[0] as SimpleDraweeView
                 simpleDraweeView.apply {
                     hierarchy.n(s.l)
