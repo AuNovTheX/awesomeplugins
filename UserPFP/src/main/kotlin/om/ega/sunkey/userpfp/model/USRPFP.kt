@@ -48,7 +48,7 @@ object USRPFP : AbstractDatabase() {
 		    } else {
                     val matcher = Pattern.compile(
                         id.toString() + regex + id.toString() + regex2,
-			Pattern.DOTALL, Pattern.UNICODE_CASE
+			Pattern.DOTALL Pattern.UNICODE_CASE
                     ).matcher(data)
 
                     if (matcher.find()) {
