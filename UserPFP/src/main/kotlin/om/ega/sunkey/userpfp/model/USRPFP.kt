@@ -36,7 +36,7 @@ object USRPFP : AbstractDatabase() {
                 Boolean::class.javaPrimitiveType,
                 Integer::class.java
             ), Hook {
-		//UserPFP.log.debug(it.args[0].toString() + it.args[3].toString() + " it args 3 with 0")
+		it.args[3] = false
                 if (it.result.toString().contains(".gif") && settings.getBool(
                         "nitroBanner",
                         true
@@ -52,12 +52,8 @@ object USRPFP : AbstractDatabase() {
                     ).matcher(data)
 
                     if (matcher.find()) {
-                        mapCache[id] = PFP(matcher.group(1), matcher.group(2)).also {
-                                it1 -> it.result = it1.static
-				//UserPFP.log.debug(it.args[3].toString() + " args3")
-				//UserPFP.log.debug(it.result.toString() + " result")
-				//UserPFP.log.debug(it1.static.toString() + " Static")
-				//UserPFP.log.debug(it1.animated.toString() + " Animated")
+                        mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
+                                it1 -> it.result = it1.animated
                         }
                     
 		   }
@@ -75,14 +71,11 @@ object USRPFP : AbstractDatabase() {
 	    Int::class.javaPrimitiveType, 
 	    Boolean::class.javaPrimitiveType, 
 	    Function1::class.java, 
-	    MGImages.ChangeDetector::class.java //what is this for??? idk looks like its for role icons 
+	    MGImages.ChangeDetector::class.java //ok this is the icons drawables lmao 
 	    ), Hook {
 	     
                 if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Hook
 
-		//UserPFP.log.debug(it.args[1].toString() + " seticon arg 1")
-		//UserPFP.log.debug(it.args[0].toString() + " imageview")
-		//UserPFP.log.debug(it.args[5].toString() + " boolean")
                 val simpleDraweeView = it.args[0] as SimpleDraweeView
                 simpleDraweeView.apply {
                     hierarchy.n(s.l)

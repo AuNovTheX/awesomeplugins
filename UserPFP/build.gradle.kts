@@ -8,4 +8,6 @@ aliucord {
     """.trimIndent()
     )
     author("HalalKing", 0)
+
+    excludeFromUpdaterJson.set(true)
 }
