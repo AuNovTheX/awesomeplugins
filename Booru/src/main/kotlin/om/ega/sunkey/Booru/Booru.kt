@@ -52,7 +52,7 @@ val commandoptions = listOf(
     }
 }
 
-class BooruPage(tag: String?) : SettingsPage() {
+class BooruPage(tag: String) : SettingsPage() {
 	override fun onViewBound(view: View) {
 		super.onViewBound(view)
 		setActionBarTitle("Booru Browser")
@@ -68,7 +68,12 @@ class BooruPage(tag: String?) : SettingsPage() {
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
 		while (matcher.find()) {
-			matcher.group(1)?.let { res -> h = Http.simpleGet(res); image.setImageBitmap(h); addView(image) }
+			matcher.group(1)?.let { res -> image.setImageBitmap(Gett(res)); addView(image) }
 		}
+	}
+
+	open fun Gett(h: String) {
+		val www = Http.simpleGet(h)
+		return www
 	}
 }
