@@ -44,7 +44,7 @@ class Booru : Plugin() {
 		} */
 		//val real = end.toString().replace("[", "").replace("]", "").replace(",", "") 
 		//please dont ask about this horror code 
-		return@registerCommand CommandResult(() -> Utils.openPageWithProxy(Utils.getAppActivity(), Booru(keyw)))
+		return@registerCommand CommandResult(Utils.openPageWithProxy(Utils.getAppActivity(), Booru(keyw)))
 	}
 
 	h
@@ -59,7 +59,7 @@ val commandoptions = listOf(
 		choices = emptyList(),
 		subCommandOptions = emptyList(),
 		autocomplete = false
-	)*/ ,
+	)/* ,
 	Utils.createCommandOption(
 		ApplicationCommandType.STRING, "number", "Insert the page you want to send. (changing pages will show different results).", null,
 		required = true,
@@ -98,8 +98,7 @@ class BooruPage(tag: String) : SettingsPage() {
 		
 		val context = view.getContext()
 
-		val search = Http.simpleGet("https://safebooru.org/index.php
-		?page=dapi&s=post&q=index&limit=20&pid=1&tags=${tag}")
+		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=20&pid=1&tags=${tag}")
 		
 		var image = ImageView(context)
 		image.setMaxHeight(500)
