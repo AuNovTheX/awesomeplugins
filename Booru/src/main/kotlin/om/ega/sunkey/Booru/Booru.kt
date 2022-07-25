@@ -44,10 +44,8 @@ class Booru : Plugin() {
 		} */
 		//val real = end.toString().replace("[", "").replace("]", "").replace(",", "") 
 		//please dont ask about this horror code 
-		return@registerCommand CommandResult(Utils.openPageWithProxy(Utils.getAppActivity(), Booru(keyw)))
+		return@registerCommand CommandResult(Utils.openPageWithProxy(context, BooruPage(keyw)))
 	}
-
-	h
    }
 
 val commandoptions = listOf(
@@ -94,7 +92,7 @@ val commandoptions = listOf(
 class BooruPage(tag: String) : SettingsPage() {
 	override fun onViewBound(view: View) {
 		super.onViewBound(view)
-		setOnActionBarTitle("Booru Browser")
+		setActionBarTitle("Booru Browser")
 		
 		val context = view.getContext()
 
@@ -107,7 +105,7 @@ class BooruPage(tag: String) : SettingsPage() {
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
 		while (matcher.find()) {
-			matcher.group(1)?.let { res -> image.setImageUri(res), addView(image) }
+			matcher.group(1)?.let { res -> image.setImageUri(res); addView(image) }
 		}
 		
 		//val real = end.toString().replace("[", "").replace("]", "").replace(",", "")
