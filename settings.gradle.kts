@@ -9,7 +9,7 @@ include(
     "UserBG",
     "AliucordRenamer",
     "FanCopypasta",
-    "SafeBooru",
+    "Booru",
     "Rule34"
 )
 
