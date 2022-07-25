@@ -28,9 +28,7 @@ import com.discord.api.commands.ApplicationCommandType
 class Booru : Plugin() {
     override fun start(context: Context) {
         commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
-		var keyw = it.getString("tag")
-
-		context -> 
+		var keyw: String = it.getString("tag");
 		Utils.openPageWithProxy(context, BooruPage(keyw));
  
 		return@registerCommand CommandResult(null)
