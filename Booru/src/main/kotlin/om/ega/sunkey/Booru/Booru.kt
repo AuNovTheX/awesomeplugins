@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.*
 import android.widget.*
 import android.graphics.*
+import android.util.Base64
 
 import com.aliucord.Utils
 import com.aliucord.Logger
@@ -21,6 +22,7 @@ import com.aliucord.entities.Plugin
 import com.aliucord.patcher.*
 
 import java.util.regex.Pattern
+import java.io.*
 
 import com.discord.api.commands.ApplicationCommandType
 
@@ -74,6 +76,9 @@ class BooruPage(tag: String) : SettingsPage() {
 
 	open fun Gett(h: String) {
 		val www = Http.simpleGet(h)
-		return www
+		val baos = ByteArrayOutputStream()
+		www.pipe(baos)
+		var b64 = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT)
+		return String.format("%s", b64)
 	}
 }
