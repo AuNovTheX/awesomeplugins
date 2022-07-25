@@ -27,8 +27,8 @@ import com.discord.api.commands.ApplicationCommandType
 @AliucordPlugin(requiresRestart = false)
 class Booru : Plugin() {
     override fun start(context: Context) {
-        commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
-		var keyw: String = it.getString("tag");
+        commands.registerCommand("Booru", "Search images in a booru", commandoptions) {
+		var keyw: String = it.getString("tag")!!;
 		Utils.openPageWithProxy(context, BooruPage(keyw));
  
 		return@registerCommand CommandResult(null)
@@ -52,7 +52,7 @@ val commandoptions = listOf(
     }
 }
 
-class BooruPage(tag: String) : SettingsPage() {
+class BooruPage(tag: String?) : SettingsPage() {
 	override fun onViewBound(view: View) {
 		super.onViewBound(view)
 		setActionBarTitle("Booru Browser")
