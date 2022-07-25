@@ -26,7 +26,9 @@ import com.discord.api.commands.ApplicationCommandType
 class Booru : Plugin() {
     override fun start(context: Context) {
         commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
-		var keyw = it.getString("tag") 
+		var keyw = it.getString("tag")
+
+		context -> Utils.openPageWithProxy(context, BooruPage(keyw))
 
 		//var number = it.getString("number")?.toInt()
 		//val LOG: Logger = Logger("FC")
@@ -44,7 +46,7 @@ class Booru : Plugin() {
 		} */
 		//val real = end.toString().replace("[", "").replace("]", "").replace(",", "") 
 		//please dont ask about this horror code 
-		return@registerCommand CommandResult(Utils.openPageWithProxy(context, BooruPage(keyw)))
+		return@registerCommand CommandResult(null)
 	}
    }
 
