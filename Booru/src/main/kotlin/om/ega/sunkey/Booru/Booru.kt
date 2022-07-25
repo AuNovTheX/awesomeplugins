@@ -68,9 +68,7 @@ class BooruPage(tag: String?) : SettingsPage() {
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
 		while (matcher.find()) {
-			matcher.group(1)?.let { res -> image.setImageUri(res); addView(image) }
+			matcher.group(1)?.let { res -> h = Http.simpleGet(res); image.setImageBitmap(h); addView(image) }
 		}
-		
-		//val real = end.toString().replace("[", "").replace("]", "").replace(",", "")
 	}
 }
