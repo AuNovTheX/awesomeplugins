@@ -2,6 +2,8 @@ package om.ega.sunkey.Booru
 
 import android.content.Context
 import android.view.*
+import android.widget.*
+import android.graphics.*
 
 import com.aliucord.Utils
 import com.aliucord.Logger
@@ -28,24 +30,9 @@ class Booru : Plugin() {
         commands.registerCommand("SafeBooru", "Search images in safebooru", commandoptions) {
 		var keyw = it.getString("tag")
 
-		context -> Utils.openPageWithProxy(context, BooruPage(keyw))
-
-		//var number = it.getString("number")?.toInt()
-		//val LOG: Logger = Logger("FC")
-		//var limit = it.getString("limit")!!.toInt()
-		//if (limit > 5) limit = 5 //hardcode limit because discord embedding limits it to 5 lolll
-		//val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=${limit}&pid=${number}&tags=${keyw}")
-		
-		
-		//var end = arrayListOf<String>()
-		
-		//val result = search.toString()
-		//val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
-		/* while (matcher.find()) { 
-		matcher.group(1)?.let { res -> end.add(res) }
-		} */
-		//val real = end.toString().replace("[", "").replace("]", "").replace(",", "") 
-		//please dont ask about this horror code 
+		context -> 
+		Utils.openPageWithProxy(context, BooruPage(keyw));
+ 
 		return@registerCommand CommandResult(null)
 	}
    }
@@ -59,32 +46,8 @@ val commandoptions = listOf(
 		choices = emptyList(),
 		subCommandOptions = emptyList(),
 		autocomplete = false
-	)/* ,
-	Utils.createCommandOption(
-		ApplicationCommandType.STRING, "number", "Insert the page you want to send. (changing pages will show different results).", null,
-		required = true,
-		default = false,
-		channelTypes = emptyList(),
-		choices = emptyList(),
-		subCommandOptions = emptyList(),
-		autocomplete = false
-	),
-	Utils.createCommandOption(
-		ApplicationCommandType.STRING, "limit", "Insert the limit of images you want to send. The limit is hardcoded to 5 because discord embedding limits it to 5.", null,
-		required = true,
-		default = false,
-		channelTypes = emptyList(),
-		choices = emptyList(),
-		subCommandOptions = emptyList(),
-		autocomplete = false
-	)*/
+	)
 )
-
-	/* fun booru(keywt: String) {
-		val search = Http.simpleGet("https://safebooru.org/index.php?page=dapi&s=post&q=index&limit=1&tags=${keywt}")
-		//LOG.debug(search)
-		val r = search.toString()
-	} */
 
     override fun stop(context: Context) {
         commands.unregisterAll()
