@@ -75,14 +75,15 @@ class BooruPage(tag: String) : SettingsPage() {
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
 		while (matcher.find()) {
 			matcher.group(1)?.let { res -> 
-			h = URL(res);
-			i = h.openConnection();
+			/*h = URL(res);
+			val i = h.openConnection();
 			i.connect();
-			IS = i.getInputStream();
-			BIS = BufferedInputStream(IS);
-			BF = BitmapFactory.decodeStream(BIS);
-			BIS.close();
-			IS.close();
+			val IS = i.getInputStream();
+			val BIS = BufferedInputStream(IS);*/
+			h = Http.simpleGet(res)
+			val BF = BitmapFactory.decodeStream(h);
+			//BIS.close();
+			//IS.close();
 			image.setImageBitmap(BF); addView(image) }
 		}
 	}
