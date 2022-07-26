@@ -23,6 +23,8 @@ import com.aliucord.patcher.*
 
 import java.util.regex.Pattern
 import java.io.*
+import java.net.URLConnection
+import java.net.URL
 
 import com.discord.api.commands.ApplicationCommandType
 
@@ -67,18 +69,29 @@ class BooruPage(tag: String) : SettingsPage() {
 		image.setMaxHeight(500)
 		image.setMaxWidth(720)
 
+		var h = Http.simpleGet("https://example.com")
+
 		val result = search.toString()
 		val matcher = Pattern.compile("file_url=\"(https:\\/\\/[\\w.\\/-]*)\"").matcher(result)
 		while (matcher.find()) {
-			matcher.group(1)?.let { res -> image.setImageBitmap(Gett(res)); addView(image) }
+			matcher.group(1)?.let { res -> 
+			h = URL(res);
+			i = h.openConnection();
+			i.connect();
+			IS = i.getInputStream();
+			BIS = BufferedInputStream(IS);
+			BF = BitmapFactory.decodeStream(BIS);
+			BIS.close();
+			IS.close();
+			image.setImageBitmap(BF); addView(image) }
 		}
 	}
 
-	open fun Gett(h: String) {
+	/* open fun Gett(h: String) {
 		val www = Http.simpleGet(h)
 		val baos = ByteArrayOutputStream()
 		www.pipe(baos)
 		var b64 = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT)
 		return String.format("%s", b64)
-	}
+	}*/
 }
