@@ -80,7 +80,8 @@ class BooruPage(tag: String) : SettingsPage() {
 			val IS = i.getInputStream();
 			val BIS = BufferedInputStream(IS);*/
 			h = Http.simpleGet(res)
-			val BAIS = ByteArrayInputStream(h.getBytes())
+			val BAIS = ByteArrayInputStream();
+			h.pipe(BAIS);
 			val BF = BitmapFactory.decodeStream(BAIS);
 			//BIS.close();
 			//IS.close();
