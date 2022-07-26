@@ -23,8 +23,7 @@ import com.aliucord.patcher.*
 
 import java.util.regex.Pattern
 import java.io.*
-import java.net.URLConnection
-import java.net.URL
+import java.lang.*
 
 import com.discord.api.commands.ApplicationCommandType
 
