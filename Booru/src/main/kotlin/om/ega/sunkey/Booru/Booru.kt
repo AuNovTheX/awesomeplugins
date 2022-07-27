@@ -27,8 +27,6 @@ import java.lang.*
 
 import com.discord.api.commands.ApplicationCommandType
 
-import om.ega.sunkey.Booru.util
-
 @AliucordPlugin(requiresRestart = false)
 class Booru : Plugin() {
     override fun start(context: Context) {
@@ -83,7 +81,7 @@ class BooruPage(tag: String) : SettingsPage() {
 			val BIS = BufferedInputStream(IS);*/
 
 			h = Http.simpleGet(res);
-			val bb = BAIS.guh(h);
+			val bb = ByteArrayInputStream(h.toByteArray());
 			val BF = BitmapFactory.decodeStream(bb);
 			//BIS.close();
 			//IS.close();
