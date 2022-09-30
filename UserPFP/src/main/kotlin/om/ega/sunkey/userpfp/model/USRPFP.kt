@@ -53,7 +53,7 @@ object USRPFP : AbstractDatabase() {
 
                     if (matcher.find()) {
                         mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
-                        if (it.args[3] = true) {
+                        if (it.args[3] as Boolean = true) {
                                 it1 -> it.result = it1.animated } else {
                                   it1 -> it.result = it1.static
                                 }
@@ -78,7 +78,7 @@ object USRPFP : AbstractDatabase() {
 	    ), Hook {
 	     
                 if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Hook
-                UserPFP.log.debug(it.args[5].toString)
+                UserPFP.log.debug(it.args[5].toString())
 
                 val simpleDraweeView = it.args[0] as SimpleDraweeView
                 simpleDraweeView.apply {
