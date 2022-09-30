@@ -10,6 +10,7 @@ include(
     "AliucordRenamer",
     "FanCopypasta",
     "Booru",
-    "Rule34"
+    "Rule34",
+    "UserPFP"
 )
 
