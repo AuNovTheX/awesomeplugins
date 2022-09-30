@@ -48,7 +48,7 @@ object USRPFP : AbstractDatabase() {
 		    } else {
                     val matcher = Pattern.compile(
                         id.toString() + regex + id.toString() + regex2,
-			Pattern.DOTALL | Pattern.UNICODE_CASE
+			Pattern.DOTALL
                     ).matcher(data)
 
                     if (matcher.find()) {
@@ -75,6 +75,7 @@ object USRPFP : AbstractDatabase() {
 	    ), Hook {
 	     
                 if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Hook
+                it.args[5] as Boolean = false
 
                 val simpleDraweeView = it.args[0] as SimpleDraweeView
                 simpleDraweeView.apply {
