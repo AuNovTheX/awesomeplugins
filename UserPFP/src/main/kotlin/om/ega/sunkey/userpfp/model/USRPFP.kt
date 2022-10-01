@@ -53,10 +53,7 @@ object USRPFP : AbstractDatabase() {
 
                     if (matcher.find()) {
                         mapCache[id] = PFP(matcher.group(2), matcher.group(1)).also {
-                        if (it.args[3] as Boolean = true) {
-                                it1 -> it.result = it1.animated } else {
-                                  it1 -> it.result = it1.static
-                                }
+                        it1 -> it.result = it1.animated }
                         }
                     
 		   }
@@ -74,7 +71,7 @@ object USRPFP : AbstractDatabase() {
 	    Int::class.javaPrimitiveType, 
 	    Boolean::class.javaPrimitiveType, 
 	    Function1::class.java, 
-	    MGImages.ChangeDetector::class.java //ok this is the icons drawables lmao 
+	    MGImages.ChangeDetector::class.java  
 	    ), Hook {
 	     
                 if ((it.args[1] as String).contains("https://cdn.discordapp.com/role-icons")) return@Hook
@@ -87,6 +84,7 @@ object USRPFP : AbstractDatabase() {
                     background =
                         ShapeDrawable(OvalShape()).apply { paint.color = Color.TRANSPARENT }
                 }
+                IconUtils.setIcon(simpleDraweeView, PFP.static)
 		
             })
     }
