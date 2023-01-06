@@ -17,7 +17,7 @@ class StartupSound : Plugin() {
         startupdiscord()
     }
 
-val sonido = settings.getString("sonido", "https://github.com/OmegaSunkey/awesomeplugins/blob/main/Discord%20Startup%20Sound%20HQ.mp3?raw=true")
+val sonido = settings.getString("sonido", "https://github.com/AuNovTheX/awesomeplugins/blob/main/discord-notification.mp3?raw=true")
 
 private fun startupdiscord() {
         try {
